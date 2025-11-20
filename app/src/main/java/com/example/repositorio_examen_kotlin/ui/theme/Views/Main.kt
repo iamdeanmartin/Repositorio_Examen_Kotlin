@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 
+import android.widget.Toast
+
 import androidx.compose.foundation.layout.width
 
 import androidx.compose.material3.Slider
@@ -35,6 +37,10 @@ import androidx.compose.runtime.setValue
 
 import androidx.compose.material3.Text
 
+import androidx.compose.material3.Button
+
+import androidx.compose.foundation.shape.RoundedCornerShape
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,6 +49,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 
@@ -50,13 +57,11 @@ fun main(modifier:Modifier = Modifier) {
 
     var nombre by rememberSaveable { mutableStateOf("") }
 
-    var switchState by rememberSaveable { mutableStateOf(true) }
+    var switchState by rememberSaveable { mutableStateOf(false) }
 
     var minimo by rememberSaveable { mutableStateOf(0) }
 
     var maximo by rememberSaveable { mutableStateOf(0) }
-
-    var cantidadInventario by rememberSaveable { mutableStateOf(0) }
 
     var sandia by rememberSaveable { mutableStateOf(false) }
 
@@ -70,7 +75,9 @@ fun main(modifier:Modifier = Modifier) {
 
     var pastel by rememberSaveable { mutableStateOf(false) }
 
-    var cantidadMax by rememberSaveable { mutableStateOf(cantidadInventario) }
+    var cantidadInventario by rememberSaveable { mutableStateOf(0) }
+
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -240,7 +247,7 @@ fun main(modifier:Modifier = Modifier) {
 
                     Checkbox(
                         checked = zanahoria,
-                        onCheckedChange = { zanahoria = it }
+                        onCheckedChange = { zanahoria = it },
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -306,6 +313,28 @@ fun main(modifier:Modifier = Modifier) {
                     )
             }
 
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    shape = RoundedCornerShape(5.dp),
+
+                    onClick = {
+                        Toast.makeText(
+                            context,
+                            "La partida s'está generant, preparat...",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                ) {
+                    Text("Començar partida")
+                }
+            }
         }
     }
 }
