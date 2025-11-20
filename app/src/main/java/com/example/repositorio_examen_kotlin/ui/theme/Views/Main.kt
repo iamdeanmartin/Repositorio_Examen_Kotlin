@@ -36,6 +36,10 @@ fun main(modifier:Modifier = Modifier) {
 
     var nombre by rememberSaveable { mutableStateOf("") }
 
+    var minimo by rememberSaveable { mutableStateOf(0) }
+
+    var maximo by rememberSaveable { mutableStateOf(0) }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -69,8 +73,7 @@ fun main(modifier:Modifier = Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
-                    .padding(top=30.dp),
+                    .padding(16.dp),
                 verticalAlignment = Alignment.Top,
                 horizontalArrangement = Arrangement.Start
             ) {
@@ -78,6 +81,49 @@ fun main(modifier:Modifier = Modifier) {
                     text = "Quantiat de bots:",
                     fontSize = 12.sp,
                 )
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Min:",
+                        fontSize = 12.sp,
+                    )
+
+                    TextField(
+                        value = nombre,
+                        onValueChange = {nombre = it},
+                        label = { Text(text = "0") }
+                    )
+                }
+
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Max:",
+                        fontSize = 12.sp,
+                    )
+
+                    TextField(
+                        value = nombre,
+                        onValueChange = {nombre = it},
+                        label = { Text(text = "30") }
+                    )
+                }
             }
 
         }
