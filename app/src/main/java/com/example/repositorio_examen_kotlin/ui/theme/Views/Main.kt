@@ -86,7 +86,18 @@ fun main(modifier:Modifier = Modifier) {
 
     var pastel by rememberSaveable { mutableStateOf(false) }
 
-    var cantidadInventario by rememberSaveable { mutableStateOf(0) }
+    var cantidadSandia by rememberSaveable { mutableStateOf(0) }
+    var cantidadPlatano by rememberSaveable { mutableStateOf(0) }
+    var cantidadCake by rememberSaveable { mutableStateOf(0) }
+    var cantidadChampi by rememberSaveable { mutableStateOf(0) }
+    var cantidadZanahoria by rememberSaveable { mutableStateOf(0) }
+
+    var cantidadKiwi by rememberSaveable { mutableStateOf(0) }
+
+    var cantidadTotal = cantidadSandia + cantidadPlatano + cantidadCake + cantidadZanahoria + cantidadChampi + cantidadKiwi
+
+    var cantidadInventario by rememberSaveable { mutableStateOf(cantidadTotal) }
+
 
     val context = LocalContext.current
 
@@ -262,8 +273,10 @@ fun main(modifier:Modifier = Modifier) {
                         checked = sandia,
                         onCheckedChange = { sandia = it
                             if (sandia) {
-                            cantidadInventario += 1
-                        }}
+                            cantidadSandia += 1
+                        }  else {
+                                cantidadSandia == 0
+                            }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -280,8 +293,10 @@ fun main(modifier:Modifier = Modifier) {
                         checked = platano,
                         onCheckedChange = { platano = it
                             if (platano) {
-                            cantidadInventario += 1
-                        }}
+                            cantidadPlatano += 1
+                        }  else {
+                                cantidadPlatano == 0
+                            }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -307,8 +322,10 @@ fun main(modifier:Modifier = Modifier) {
                         checked = champi,
                         onCheckedChange = { champi = it
                             if (champi) {
-                            cantidadInventario += 1
-                        }}
+                            cantidadChampi += 1
+                        } else {
+                                cantidadChampi == 0
+                            }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -325,8 +342,10 @@ fun main(modifier:Modifier = Modifier) {
                         checked = zanahoria,
                         onCheckedChange = { zanahoria = it
                             if (zanahoria) {
-                            cantidadInventario += 1
-                        }},
+                            cantidadZanahoria += 1
+                        }  else {
+                                cantidadZanahoria == 0
+                            }},
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -350,7 +369,12 @@ fun main(modifier:Modifier = Modifier) {
                 ) {
                     Checkbox(
                         checked = kiwi,
-                        onCheckedChange = { kiwi = it }
+                        onCheckedChange = { kiwi = it
+                            if (kiwi) {
+                                cantidadKiwi += 1
+                            } else {
+                                cantidadKiwi == 0
+                            }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -367,7 +391,9 @@ fun main(modifier:Modifier = Modifier) {
                         checked = pastel,
                         onCheckedChange = { pastel = it
                                           if (pastel) {
-                                              cantidadInventario += 1
+                                              cantidadCake += 1
+                                          }  else {
+                                              cantidadCake == 0
                                           }},
                     )
 
