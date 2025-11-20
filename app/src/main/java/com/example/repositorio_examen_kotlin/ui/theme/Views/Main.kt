@@ -64,6 +64,8 @@ fun main(modifier:Modifier = Modifier) {
 
     var switchState by rememberSaveable { mutableStateOf(false) }
 
+    val variableTrabajo = 0
+
     var minimo by rememberSaveable { mutableStateOf("") }
     var minimoNumero by rememberSaveable { mutableStateOf(0) }
 
@@ -148,8 +150,9 @@ fun main(modifier:Modifier = Modifier) {
                         value = minimo,
                         onValueChange = {minimo = it
                                         val numero = it.toIntOrNull()
-
-                                        },
+                            if (numero != null && numero < 30 && numero >= 0) {
+                                minimoNumero = numero
+                            }},
                         placeholder = { Text(text = "0") },
                         modifier = Modifier
                             .width(100.dp)
@@ -169,6 +172,16 @@ fun main(modifier:Modifier = Modifier) {
                     TextField(
                         value = maximo,
                         onValueChange = {maximo = it
+                            val numero = it.toIntOrNull()
+                            if (numero != null && numero > minimoNumero && numero <= 30) {
+                                maximoNumero = numero
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Número inválido",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
                                         },
                         placeholder = { Text(text = "30") },
                         modifier = Modifier
