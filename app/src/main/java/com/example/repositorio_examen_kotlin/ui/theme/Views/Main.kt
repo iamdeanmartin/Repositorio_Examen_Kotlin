@@ -1,6 +1,5 @@
 package com.example.repositorio_examen_kotlin.ui.theme.Views
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 
 import androidx.compose.ui.unit.dp
@@ -8,6 +7,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
 
 import androidx.compose.ui.Modifier
+
+import androidx.compose.material3.SliderDefaults
 
 import androidx.compose.foundation.layout.Row
 
@@ -18,6 +19,8 @@ import android.widget.Toast
 
 import androidx.compose.foundation.layout.width
 
+import androidx.compose.ui.graphics.Color
+
 import androidx.compose.material3.Slider
 
 import com.example.repositorio_examen_kotlin.R
@@ -25,6 +28,7 @@ import com.example.repositorio_examen_kotlin.R
 import androidx.compose.ui.res.painterResource
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 
 import androidx.compose.material3.Switch
 
@@ -49,6 +53,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.platform.LocalContext
 
 @Composable
@@ -59,9 +64,13 @@ fun main(modifier:Modifier = Modifier) {
 
     var switchState by rememberSaveable { mutableStateOf(false) }
 
-    var minimo by rememberSaveable { mutableStateOf(0) }
+    var minimo by rememberSaveable { mutableStateOf("") }
+    var minimoNumero by rememberSaveable { mutableStateOf(0) }
 
-    var maximo by rememberSaveable { mutableStateOf(0) }
+    var numeroValue by rememberSaveable { mutableStateOf(0f) }
+
+    var maximo by rememberSaveable { mutableStateOf("") }
+    var maximoNumero by rememberSaveable { mutableStateOf(0) }
 
     var sandia by rememberSaveable { mutableStateOf(false) }
 
@@ -103,7 +112,7 @@ fun main(modifier:Modifier = Modifier) {
                 TextField(
                     value = nombre,
                     onValueChange = {nombre = it},
-                    label = { Text(text = "Nom del server de la partida...") }
+                    placeholder = { Text(text = "Nom del server de la partida...") }
                 )
             }
 
@@ -136,8 +145,11 @@ fun main(modifier:Modifier = Modifier) {
                     )
 
                     TextField(
-                        value = nombre,
-                        onValueChange = {nombre = it},
+                        value = minimo,
+                        onValueChange = {minimo = it
+                                        val numero = it.toIntOrNull()
+
+                                        },
                         label = { Text(text = "0") },
                         modifier = Modifier
                             .width(100.dp)
@@ -155,11 +167,48 @@ fun main(modifier:Modifier = Modifier) {
                     )
 
                     TextField(
-                        value = nombre,
-                        onValueChange = {nombre = it},
+                        value = maximo,
+                        onValueChange = {maximo = it},
                         label = { Text(text = "30") },
                         modifier = Modifier
                             .width(100.dp)
+                    )
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .padding(8.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    Text(
+                        text = "${numeroValue.toInt().toString()}"
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    Slider(
+                        value=numeroValue,
+                        onValueChange = {numeroValue = it},
+                        valueRange = 0f..30f,
+                        steps = 0,
+                        colors = SliderDefaults.colors(
+                            thumbColor = Color.Blue,
+                            activeTrackColor = Color.Blue,
+                            inactiveTrackColor = Color.Gray
+                        )
                     )
                 }
             }
