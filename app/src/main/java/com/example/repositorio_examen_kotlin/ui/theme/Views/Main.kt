@@ -107,8 +107,6 @@ fun main(modifier:Modifier = Modifier) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -118,11 +116,8 @@ fun main(modifier:Modifier = Modifier) {
             ) {
                 Text(
                     text = "Quantiat de bots:",
-                    fontSize = 12.sp,
                 )
             }
-
-            Spacer(modifier = Modifier.height(12.dp))
 
             Row(
                 modifier = Modifier
@@ -138,13 +133,14 @@ fun main(modifier:Modifier = Modifier) {
                 ) {
                     Text(
                         text = "Min:",
-                        fontSize = 12.sp,
                     )
 
                     TextField(
                         value = nombre,
                         onValueChange = {nombre = it},
-                        label = { Text(text = "0") }
+                        label = { Text(text = "0") },
+                        modifier = Modifier
+                            .width(100.dp)
                     )
                 }
 
@@ -156,13 +152,14 @@ fun main(modifier:Modifier = Modifier) {
                 ) {
                     Text(
                         text = "Max:",
-                        fontSize = 12.sp,
                     )
 
                     TextField(
                         value = nombre,
                         onValueChange = {nombre = it},
-                        label = { Text(text = "30") }
+                        label = { Text(text = "30") },
+                        modifier = Modifier
+                            .width(100.dp)
                     )
                 }
             }
@@ -175,7 +172,6 @@ fun main(modifier:Modifier = Modifier) {
             ) {
                 Text(
                     text = "Ítems inicials a l'inventari:",
-                    fontSize = 12.sp,
                 )
 
                 Text (
@@ -302,18 +298,19 @@ fun main(modifier:Modifier = Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(8.dp)
+                    .padding(bottom=12.dp)
             ) {
                 Text(
                     text = "Está permés lootejar?:",
-                    fontSize = 12.sp,
                 )
+
+                Spacer(modifier = Modifier.width(8.dp))
 
                 Switch(checked = switchState,
                     onCheckedChange = { switchState = !switchState }
                     )
             }
-
-            Spacer(modifier = Modifier.height(8.dp))
 
             Row(
                 modifier = Modifier
