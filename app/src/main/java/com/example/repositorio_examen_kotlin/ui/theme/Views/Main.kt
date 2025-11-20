@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 
+import androidx.compose.material3.Slider
+
 import androidx.compose.ui.unit.sp
 
 import androidx.compose.runtime.getValue
@@ -39,6 +41,8 @@ fun main(modifier:Modifier = Modifier) {
     var minimo by rememberSaveable { mutableStateOf(0) }
 
     var maximo by rememberSaveable { mutableStateOf(0) }
+
+    var cantidadInventario by rememberSaveable { mutableStateOf(0) }
 
     Box(
         modifier = Modifier
@@ -83,6 +87,8 @@ fun main(modifier:Modifier = Modifier) {
                 )
             }
 
+            Spacer(modifier = Modifier.height(12.dp))
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -125,6 +131,25 @@ fun main(modifier:Modifier = Modifier) {
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "Ítems inicials a l'inventari:",
+                    fontSize = 12.sp,
+                )
+
+                TextField(
+                    value = nombre,
+                    onValueChange = {nombre = it},
+                    label = { Text(text = "1") }
+                )
+            }
+
 
         }
     }
