@@ -150,7 +150,7 @@ fun main(modifier:Modifier = Modifier) {
                                         val numero = it.toIntOrNull()
 
                                         },
-                        label = { Text(text = "0") },
+                        placeholder = { Text(text = "0") },
                         modifier = Modifier
                             .width(100.dp)
                     )
@@ -168,8 +168,9 @@ fun main(modifier:Modifier = Modifier) {
 
                     TextField(
                         value = maximo,
-                        onValueChange = {maximo = it},
-                        label = { Text(text = "30") },
+                        onValueChange = {maximo = it
+                                        },
+                        placeholder = { Text(text = "30") },
                         modifier = Modifier
                             .width(100.dp)
                     )
@@ -196,7 +197,7 @@ fun main(modifier:Modifier = Modifier) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
+                        .padding(4.dp),
                     horizontalArrangement = Arrangement.Start
                 ) {
                     Slider(
@@ -216,12 +217,16 @@ fun main(modifier:Modifier = Modifier) {
             Spacer(modifier = Modifier.height(12.dp))
 
             Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
                 Text(
                     text = "Ítems inicials a l'inventari:",
                 )
+
+                Spacer(modifier = Modifier.width(8.dp))
 
                 Text (
                     text = "$cantidadInventario"
@@ -235,6 +240,8 @@ fun main(modifier:Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
@@ -272,6 +279,8 @@ fun main(modifier:Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
@@ -309,6 +318,8 @@ fun main(modifier:Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
@@ -345,6 +356,8 @@ fun main(modifier:Modifier = Modifier) {
             }
 
             Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
@@ -354,7 +367,7 @@ fun main(modifier:Modifier = Modifier) {
                     text = "Está permés lootejar?:",
                 )
 
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(12.dp))
 
                 Switch(checked = switchState,
                     onCheckedChange = { switchState = !switchState }
