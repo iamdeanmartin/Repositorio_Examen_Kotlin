@@ -260,7 +260,10 @@ fun main(modifier:Modifier = Modifier) {
                 ) {
                     Checkbox(
                         checked = sandia,
-                        onCheckedChange = { sandia = it }
+                        onCheckedChange = { sandia = it
+                            if (sandia) {
+                            cantidadInventario += 1
+                        }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -275,7 +278,10 @@ fun main(modifier:Modifier = Modifier) {
 
                     Checkbox(
                         checked = platano,
-                        onCheckedChange = { platano = it }
+                        onCheckedChange = { platano = it
+                            if (platano) {
+                            cantidadInventario += 1
+                        }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -299,7 +305,10 @@ fun main(modifier:Modifier = Modifier) {
                 ) {
                     Checkbox(
                         checked = champi,
-                        onCheckedChange = { champi = it }
+                        onCheckedChange = { champi = it
+                            if (champi) {
+                            cantidadInventario += 1
+                        }}
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -314,7 +323,10 @@ fun main(modifier:Modifier = Modifier) {
 
                     Checkbox(
                         checked = zanahoria,
-                        onCheckedChange = { zanahoria = it },
+                        onCheckedChange = { zanahoria = it
+                            if (zanahoria) {
+                            cantidadInventario += 1
+                        }},
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -353,7 +365,10 @@ fun main(modifier:Modifier = Modifier) {
 
                     Checkbox(
                         checked = pastel,
-                        onCheckedChange = { pastel = it }
+                        onCheckedChange = { pastel = it
+                                          if (pastel) {
+                                              cantidadInventario += 1
+                                          }},
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
